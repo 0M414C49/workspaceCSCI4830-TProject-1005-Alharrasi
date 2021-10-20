@@ -54,7 +54,9 @@ public class Login extends HttpServlet {
 		}
 		else if (username.equals(""))
 		{
-			String wronginput = "Please Enter Username!";
+			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+					"  <strong>Warning!</strong> Please Enter Username!.\r\n" + 
+					"</div>";
 			request.setAttribute("wronginput", wronginput);
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
@@ -62,7 +64,9 @@ public class Login extends HttpServlet {
 		}
 		else if (password.equals(""))
 		{
-			String wronginput = "Please Enter Password!";
+			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+					"  <strong>Warning!</strong> Please Enter Password!.\r\n" + 
+					"</div>";
 			request.setAttribute("wronginput", wronginput);
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 			rd.forward(request, response);
@@ -70,8 +74,12 @@ public class Login extends HttpServlet {
 		}
 		else
 		{
-			String wronginput = "You entered wrong credetionals!";
-			response.sendRedirect("login.jsp");
+			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+					"  <strong>Warning!</strong> You entered wrong credetionals!.\r\n" + 
+					"</div>";
+			request.setAttribute("wronginput", wronginput);
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
 		}
 	}
 

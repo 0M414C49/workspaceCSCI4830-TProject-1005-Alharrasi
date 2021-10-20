@@ -103,7 +103,7 @@
 							class="form-control" name="Lname"> <br> <label
 							for="JobRole">Job Role : </label> <input type="text"
 							class="form-control" name="JRole"> <br> <label
-							for="DoB">DoB : </label> <input type="date" class="form-control"
+							for="DoB">Start date : </label> <input type="date" class="form-control"
 							name="DoB"> <br> <label for="email">Email :
 						</label> <input type="email" class="form-control" name="Email"> <br>
 						<button type="submit">Add Employee</button>
