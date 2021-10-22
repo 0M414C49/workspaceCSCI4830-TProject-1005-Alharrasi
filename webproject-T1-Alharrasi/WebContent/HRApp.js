@@ -5,7 +5,7 @@
 
 
 function fetchEmployees() {
-	fetch('/webproject-T1-Alharrasi/Demo')
+	fetch('/webproject-T1-Alharrasi/GetEmployee')
 	.then(
 			function(response) {
 				return response
@@ -13,8 +13,7 @@ function fetchEmployees() {
 						.then(
 								function(text) {
 									document
-											.getElementById("add_to_me").innerHTML = "<h1>"
-											+ text + "</h1>";
+											.getElementById("add_to_me").innerHTML = text;
 								});
 			});
 }

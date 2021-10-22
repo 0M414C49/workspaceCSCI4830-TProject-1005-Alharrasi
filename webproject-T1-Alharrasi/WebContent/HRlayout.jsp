@@ -25,6 +25,9 @@
 	src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 
 
+
+
+
 <script type="text/javascript" src="HRApp.js"></script>
 
 <style type="text/css">
@@ -118,7 +121,17 @@
 				fetchEmployees();
 				</script>
 				
-				<div id="add_to_me"></div>
+				<script>
+					$(document).ready(function() {
+						$('#myTable').dataTable(
+								{
+									"processing": true,
+							        "serverSide": true,
+							        "ajax": "/webproject-T1-Alharrasi/GetEmployee"
+								}
+						);
+					});
+				</script>
 
 				<table id="myTable"
 					class="table table-striped table-bordered table-sm" cellspacing="0"
@@ -127,236 +140,20 @@
 						<tr>
 							<th class="th-sm">Name</th>
 							<th class="th-sm">Position</th>
-							<th class="th-sm">Office</th>
+							<th class="th-sm">Phone</th>
+							<th class="th-sm">Email</th>
 							<th class="th-sm">Age</th>
 							<th class="th-sm">Start date</th>
 							<th class="th-sm">Salary</th>
 							<th class="th-sm">Remove/Edit</th>
 
 						</tr>
-					</thead>
-
-					<tbody>
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-						
-						<tr>
-							<td>Tiger Nixon</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>71</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td><span class="table-remove"><button
-										type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-										Remove</button></span> <span class="table-remove"><button
-										type="button" class="btn btn-warning btn-rounded btn-sm my-0">
-										Edit</button></span></td>
-						</tr>
-
-					</tbody>
+					
 				</table>
 
 
 
-				<script>
-					$(document).ready(function() {
-						$('#myTable').dataTable();
-					});
-				</script>
+				
 
 			</div>
 		</div>
