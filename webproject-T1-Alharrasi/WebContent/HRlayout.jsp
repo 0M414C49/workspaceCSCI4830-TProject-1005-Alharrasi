@@ -95,17 +95,16 @@
 
 
 					<div class="form-group">
-						<label for="user">Username : </label> <input type="text"
-							class="form-control" name="Username"> <br> <label
-							for="Fname">First Name : </label> <input type="text"
-							class="form-control" name="Fname"> <br> <label
-							for="Lname">Last Name : </label> <input type="text"
-							class="form-control" name="Lname"> <br> <label
-							for="JobRole">Job Role : </label> <input type="text"
-							class="form-control" name="JRole"> <br> <label
-							for="DoB">Start date : </label> <input type="date" class="form-control"
-							name="DoB"> <br> <label for="email">Email :
-						</label> <input type="email" class="form-control" name="Email"> <br>
+						<label for="Fname">First Name : </label> <input type="text" class="form-control" name="FIRST_NAME"> <br>
+						<label for="Lname">Last Name : </label> <input type="text" class="form-control" name="LAST_NAME"> <br>
+						<label for="JobRole">Job Role : </label> <input type="text" class="form-control" name="POSITION"> <br>
+						<label for="Age">Age : </label> <input type="text" class="form-control" name="AGE"> <br>
+						<label for="Date">Start date : </label> <input type="date" class="form-control"name="DATE"> <br>
+						<label for="Phone">Phone : </label> <input type="text" class="form-control" name="PHONE"> <br>
+						<label for="email">Email : </label> <input type="email" class="form-control" name="EMAIL"> <br>
+						<label for="pass">Password : </label> <input type="text" class="form-control" name="PASSWORD"> <br>
+						<label for="salary">Salary : </label> <input type="text" class="form-control" name="SALARY"> <br>
+						
 						<button type="submit">Add Employee</button>
 					</div>
 				</form>

@@ -63,12 +63,14 @@ public class UtilDB {
 
 
 
-   public static void createEmployees(String fIRST_NAME, String lAST_NAME, String pHONE, String eMAIL) {
+   public static void createEmployees(String fIRST_NAME, String lAST_NAME, String pASSWORD, String pHONE, String eMAIL,
+			int aGE, String dATE, String sALARY, String pPOSITION) {
       Session session = getSessionFactory().openSession();
       Transaction tx = null;
       try {
          tx = session.beginTransaction();
-         session.save(new MyEmployeeAlharrasi(fIRST_NAME, lAST_NAME, pHONE, eMAIL));
+         session.save(new MyEmployeeAlharrasi( fIRST_NAME,  lAST_NAME,  pASSWORD,  pHONE,  eMAIL,
+     			 aGE,  dATE,  sALARY,  pPOSITION));
          tx.commit();
       } catch (HibernateException e) {
          if (tx != null)

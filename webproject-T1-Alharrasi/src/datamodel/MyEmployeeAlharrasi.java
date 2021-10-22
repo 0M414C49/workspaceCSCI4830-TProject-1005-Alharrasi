@@ -12,7 +12,7 @@ import javax.persistence.Table;
  *        VARCHAR(30) NOT NULL, age INT NOT NULL, PRIMARY KEY (id));
  */
 @Entity
-@Table(name = "MyTable1014Alharrasi")
+@Table(name = "MyTableAlharrasi")
 public class MyEmployeeAlharrasi {
 
 	@Id // primary key
@@ -43,6 +43,9 @@ public class MyEmployeeAlharrasi {
 	
 	@Column(name = "SALARY")
 	private String SALARY;
+	
+	@Column(name = "POSITION")
+	private String POSITION;
 
 	public MyEmployeeAlharrasi() {
 		super();
@@ -50,7 +53,7 @@ public class MyEmployeeAlharrasi {
 	}
 
 	public MyEmployeeAlharrasi(Integer id, String fIRST_NAME, String lAST_NAME, String pASSWORD, String pHONE,
-			String eMAIL, int aGE, String dATE, String sALARY) {
+			String eMAIL, int aGE, String dATE, String sALARY, String pPOSITION) {
 		super();
 		this.id = id;
 		FIRST_NAME = fIRST_NAME;
@@ -61,10 +64,11 @@ public class MyEmployeeAlharrasi {
 		AGE = aGE;
 		DATE = dATE;
 		SALARY = sALARY;
+		POSITION = pPOSITION;
 	}
 
 	public MyEmployeeAlharrasi(String fIRST_NAME, String lAST_NAME, String pASSWORD, String pHONE, String eMAIL,
-			int aGE, String dATE, String sALARY) {
+			int aGE, String dATE, String sALARY, String pPOSITION) {
 		super();
 		FIRST_NAME = fIRST_NAME;
 		LAST_NAME = lAST_NAME;
@@ -153,6 +157,14 @@ public class MyEmployeeAlharrasi {
 
 	public void setSALARY(String sALARY) {
 		SALARY = sALARY;
+	}
+
+	public String getPOSITION() {
+		return POSITION;
+	}
+
+	public void setPOSITION(String pOSITION) {
+		POSITION = pOSITION;
 	}
 
 	
