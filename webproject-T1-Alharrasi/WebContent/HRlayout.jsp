@@ -66,7 +66,7 @@
 			<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 			<li><a data-toggle="tab" href="#menu1">Settings</a></li>
 			<li><a data-toggle="tab" href="#menu2">Add Employee</a></li>
-			<li><a data-toggle="tab" href="#menu3" >Remove Employee</a></li>
+			<li><a data-toggle="tab" href="#menu3">Remove Employee</a></li>
 
 			<li>
 				<form action="Logout">
@@ -100,16 +100,24 @@
 
 
 					<div class="form-group">
-						<label for="Fname">First Name : </label> <input type="text" class="form-control" name="FIRST_NAME"> <br>
-						<label for="Lname">Last Name : </label> <input type="text" class="form-control" name="LAST_NAME"> <br>
-						<label for="JobRole">Job Role : </label> <input type="text" class="form-control" name="POSITION"> <br>
-						<label for="Age">Age : </label> <input type="text" class="form-control" name="AGE"> <br>
-						<label for="Date">Start date : </label> <input type="date" class="form-control"name="DATE"> <br>
-						<label for="Phone">Phone : </label> <input type="text" class="form-control" name="PHONE"> <br>
-						<label for="email">Email : </label> <input type="email" class="form-control" name="EMAIL"> <br>
-						<label for="pass">Password : </label> <input type="text" class="form-control" name="PASSWORD"> <br>
-						<label for="salary">Salary : </label> <input type="text" class="form-control" name="SALARY"> <br>
-						
+						<label for="Fname">First Name : </label> <input type="text"
+							class="form-control" name="FIRST_NAME"> <br> <label
+							for="Lname">Last Name : </label> <input type="text"
+							class="form-control" name="LAST_NAME"> <br> <label
+							for="JobRole">Job Role : </label> <input type="text"
+							class="form-control" name="POSITION"> <br> <label
+							for="Age">Age : </label> <input type="text" class="form-control"
+							name="AGE"> <br> <label for="Date">Start
+							date : </label> <input type="date" class="form-control" name="DATE">
+						<br> <label for="Phone">Phone : </label> <input type="text"
+							class="form-control" name="PHONE"> <br> <label
+							for="email">Email : </label> <input type="email"
+							class="form-control" name="EMAIL"> <br> <label
+							for="pass">Password : </label> <input type="text"
+							class="form-control" name="PASSWORD"> <br> <label
+							for="salary">Salary : </label> <input type="text"
+							class="form-control" name="SALARY"> <br>
+
 						<button type="submit">Add Employee</button>
 					</div>
 				</form>
@@ -118,31 +126,38 @@
 				<h3>Change Password</h3>
 				<p>Eaque ipsa quae ab illo inventore veritatis et quasi
 					architecto beatae vitae dicta sunt explicabo.</p>
-				
+
 				<script>
-				fetchEmployees();
+					fetchEmployees();
 				</script>
+
+
+
+
+
+
+<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Edit Employee</h4>
+							</div>
+							<div class="modal-body">
+								<div id="add_to_me"></div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
 				
-				 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <div id="add_to_me"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
 
 				<table id="myTable"
 					class="table table-striped table-bordered table-sm" cellspacing="0"
@@ -156,15 +171,14 @@
 							<th class="th-sm">Age</th>
 							<th class="th-sm">Start date</th>
 							<th class="th-sm">Salary</th>
-							<th class="th-sm"></th>			
+							<th class="th-sm"></th>
 
 						</tr>
-					
 				</table>
 
 
 
-				
+
 
 			</div>
 		</div>
