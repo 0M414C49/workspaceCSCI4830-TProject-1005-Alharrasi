@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
@@ -36,6 +37,50 @@ public class UtilDB {
    }
    
    
+   public static void removeEmployee(String id)
+   {
+	 
+	   Session session = getSessionFactory().openSession();
+	      Transaction tx = null;  // each process needs transaction and commit the changes in DB.
+
+	      try {
+	         tx = session.beginTransaction();
+	         session.createQuery(String.format("DELETE MyEmployeeAlharrasi where id= %s", id)).executeUpdate();
+	         tx.commit();
+	         
+	      } catch (HibernateException e) {
+	          if (tx != null)
+	              tx.rollback();
+	           e.printStackTrace();
+	        } finally {
+	           session.close();
+	        }
+   }
+   
+   public static List<MyEmployeeAlharrasi> getEmployee(String id)
+   {
+	   List<MyEmployeeAlharrasi> resultList = new ArrayList<MyEmployeeAlharrasi>();
+	   Session session = getSessionFactory().openSession();
+	      Transaction tx = null;  // each process needs transaction and commit the changes in DB.
+
+	      try {
+	         tx = session.beginTransaction();
+	         List<?> employees = session.createQuery(String.format("FROM MyEmployeeAlharrasi where id= %d", id)).list();
+	         for (Iterator<?> iterator = employees.iterator(); iterator.hasNext();) {
+	            MyEmployeeAlharrasi employee = (MyEmployeeAlharrasi) iterator.next();
+	            resultList.add(employee);
+	         }
+	         tx.commit();
+	         
+	      } catch (HibernateException e) {
+	          if (tx != null)
+	              tx.rollback();
+	           e.printStackTrace();
+	        } finally {
+	           session.close();
+	        }
+		return resultList;
+   }
 
    public static List<MyEmployeeAlharrasi> listEmployees() {
       List<MyEmployeeAlharrasi> resultList = new ArrayList<MyEmployeeAlharrasi>();

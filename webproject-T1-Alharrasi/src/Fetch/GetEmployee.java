@@ -37,51 +37,51 @@ public class GetEmployee extends HttpServlet {
 		response.setContentType("application/json");
 		
 		List<MyEmployeeAlharrasi> employees = UtilDB.listEmployees();
-		
-		for(int i = 0; i < employees.size(); i++)
-		{
-			
-//			String res = String.format("<tr><td>%s %s</td>\r\n" + 
-//					"							<td>%s</td>\r\n" + 
-//					"							<td>%s</td>\r\n" +
-//					"							<td>%s</td>\r\n" + 
-//					"							<td>%d</td>\r\n" + 
-//					"							<td>%s</td>\r\n" + 
-//					"							<td>%s</td>\r\n" + 
-//					"							<td><span class=\"table-remove\"><button\r\n" + 
-//					"										type=\"button\" class=\"btn btn-danger btn-rounded btn-sm my-0\">\r\n" + 
-//					"										Remove</button></span> <span class=\"table-remove\"><button\r\n" + 
-//					"										type=\"button\" class=\"btn btn-warning btn-rounded btn-sm my-0\">\r\n" + 
-//					"										Edit</button></span></td></tr>",
-//					employees.get(i).getFIRST_NAME(),
-//					employees.get(i).getLAST_NAME(),
-//					employees.get(i).getPOSITION(),
-//					employees.get(i).getPHONE(),
-//					employees.get(i).getEMAIL(),
-//					employees.get(i).getAGE(),
-//					employees.get(i).getDATE(),
-//					employees.get(i).getSALARY());
-//			
-//			out.append(res);
-			
-			
-		}
-		
 		String res = "{\r\n" + 
 				"\"draw\": 1,\r\n" + 
 				"  \"recordsTotal\": 1,\r\n" + 
 				"  \"recordsFiltered\": 1," +
-				"  \"data\": [\r\n" + 
-				"    [\r\n" + 
-				"      \"Tiger Nixon\",\r\n" + 
-				"      \"System Architect\",\r\n" + 
-				"      \"Edinburgh\",\r\n" + 
-				"      \"5421\",\r\n" + 
-				"      \"2011/04/25\",\r\n" + 
-				"      \"$320,800\",\r\n" + 
-				"      \"$320,800\",\r\n" + 
-				"      \"$320,800\"\r\n" + 
-				"    ]]}";
+				"  \"data\": [\r\n";
+		for(int i = 0; i < employees.size(); i++)
+		{
+			
+			String btn = String.format("<a id=\\\"my-button\\\" class=\\\"btn btn-danger btn-rounded btn-sm my-0\\\" onclick=\\\"removeEmployee(%d)\\\"> Remove </a> <a class=\\\"btn btn-warning btn-rounded btn-sm my-0\\\" data-toggle=\\\"modal\\\" data-target=\\\"#myModal\\\" onclick=\\\"editEmployee(%d)\\\"> Edit </a>",
+					employees.get(i).getId(),
+					employees.get(i).getId());
+			
+			res += String.format(
+					"    [\r\n" + 
+							"      \"%s %s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\",\r\n" + 
+							"      \"%s\"\r\n" + 
+							"    ]",
+					employees.get(i).getFIRST_NAME(),
+					employees.get(i).getLAST_NAME(),
+					employees.get(i).getPOSITION(),
+					employees.get(i).getPHONE(),
+					employees.get(i).getEMAIL(),
+					employees.get(i).getAGE(),
+					employees.get(i).getDATE(),
+					employees.get(i).getSALARY(),
+					btn
+					);
+			
+			
+			if (i < employees.size() - 1)
+			{
+				res += " , ";
+			}
+			
+			
+			
+		}
+		
+		res += "]}";
 		
 		out.append(res);
 		

@@ -25,8 +25,10 @@
 	src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 
 
-
-
+<script
+	src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+<script
+	src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
 
 <script type="text/javascript" src="HRApp.js"></script>
 
@@ -121,17 +123,26 @@
 				fetchEmployees();
 				</script>
 				
-				<script>
-					$(document).ready(function() {
-						$('#myTable').dataTable(
-								{
-									"processing": true,
-							        "serverSide": true,
-							        "ajax": "/webproject-T1-Alharrasi/GetEmployee"
-								}
-						);
-					});
-				</script>
+				 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <div id="add_to_me"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 				<table id="myTable"
 					class="table table-striped table-bordered table-sm" cellspacing="0"
@@ -145,7 +156,7 @@
 							<th class="th-sm">Age</th>
 							<th class="th-sm">Start date</th>
 							<th class="th-sm">Salary</th>
-							<th class="th-sm">Remove/Edit</th>
+							<th class="th-sm"></th>			
 
 						</tr>
 					

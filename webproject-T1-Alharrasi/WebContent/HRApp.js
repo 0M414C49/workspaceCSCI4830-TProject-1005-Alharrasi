@@ -2,10 +2,18 @@
  * 
  */
 
+var table;
+
+function removeEmployee(id) {
+	fetch('/webproject-T1-Alharrasi/RemoveEmployee?id=' + id);
+	
+	table.ajax.reload();
+}
 
 
-function fetchEmployees() {
-	fetch('/webproject-T1-Alharrasi/GetEmployee')
+function editEmployee(id) {
+	
+	fetch('/webproject-T1-Alharrasi/GetEditEmployee?id=' + id)
 	.then(
 			function(response) {
 				return response
@@ -16,9 +24,22 @@ function fetchEmployees() {
 											.getElementById("add_to_me").innerHTML = text;
 								});
 			});
+	table.ajax.reload();
 }
 
-function fetchEmployees2(){
-	document.getElementById("add_to_me").innerHTML = "clicked";
+function fetchEmployees(){
+	$(document).ready(function() {
+		
+		$("#my-button").click(function() {
+	        $("#myTable").ajax.reload();
+	    });
+		table = $('#myTable').DataTable(
+				{
+					
+			        "ajax": "/webproject-T1-Alharrasi/GetEmployee"
+			        
+				}
+		);
+	});
 }
 	

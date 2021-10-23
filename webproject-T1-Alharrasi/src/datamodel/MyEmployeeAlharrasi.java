@@ -78,13 +78,14 @@ public class MyEmployeeAlharrasi {
 		AGE = aGE;
 		DATE = dATE;
 		SALARY = sALARY;
+		POSITION = pPOSITION;
 	}
 
 	@Override
 	public String toString() {
 		return "MyEmployeeAlharrasi [id=" + id + ", FIRST_NAME=" + FIRST_NAME + ", LAST_NAME=" + LAST_NAME
 				+ ", PASSWORD=" + PASSWORD + ", PHONE=" + PHONE + ", EMAIL=" + EMAIL + ", AGE=" + AGE + ", DATE=" + DATE
-				+ ", SALARY=" + SALARY + "]";
+				+ ", SALARY=" + SALARY +  ", POSITION=" + POSITION + "]";
 	}
 
 	public Integer getId() {
