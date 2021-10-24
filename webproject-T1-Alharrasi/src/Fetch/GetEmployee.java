@@ -35,6 +35,20 @@ public class GetEmployee extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.setHeader("Pragma", "no-cache");
+		response.setHeader("Expires", "0");
+		
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("index.html");
+		}
+
+		if (session.getAttribute("hr") == null && session.getAttribute("username") != null) {
+			response.sendRedirect("layout.jsp");
+		}
+		
+		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		
@@ -51,27 +65,57 @@ public class GetEmployee extends HttpServlet {
 					employees.get(i).getId(),
 					employees.get(i).getId());
 			
-			res += String.format(
-					"    [\r\n" + 
-							"      \"%s %s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\",\r\n" + 
-							"      \"%s\"\r\n" + 
-							"    ]",
-					employees.get(i).getFIRST_NAME(),
-					employees.get(i).getLAST_NAME(),
-					employees.get(i).getPOSITION(),
-					employees.get(i).getPHONE(),
-					employees.get(i).getEMAIL(),
-					employees.get(i).getAGE(),
-					employees.get(i).getDATE(),
-					employees.get(i).getSALARY(),
-					btn
-					);
+			
+			if (!session.getAttribute("username").equals(employees.get(i).getEMAIL()))
+			{
+				res += String.format(
+						"    [\r\n" + 
+								"      \"%s %s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\"\r\n" + 
+								"    ]",
+						employees.get(i).getFIRST_NAME(),
+						employees.get(i).getLAST_NAME(),
+						employees.get(i).getPOSITION(),
+						employees.get(i).getPHONE(),
+						employees.get(i).getEMAIL(),
+						employees.get(i).getAGE(),
+						employees.get(i).getDATE(),
+						employees.get(i).getSALARY(),
+						btn
+						);
+			}
+			else
+			{
+				res += String.format(
+						"    [\r\n" + 
+								"      \"%s %s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\",\r\n" + 
+								"      \"%s\"\r\n" + 
+								"    ]",
+						employees.get(i).getFIRST_NAME(),
+						employees.get(i).getLAST_NAME(),
+						employees.get(i).getPOSITION(),
+						employees.get(i).getPHONE(),
+						employees.get(i).getEMAIL(),
+						employees.get(i).getAGE(),
+						employees.get(i).getDATE(),
+						employees.get(i).getSALARY(),
+						""
+						);
+			}
+			
+			
 			
 			
 			if (i < employees.size() - 1)

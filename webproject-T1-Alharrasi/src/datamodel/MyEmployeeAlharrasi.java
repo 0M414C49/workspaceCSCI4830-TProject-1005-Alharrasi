@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /**
@@ -13,6 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "MyTableAlharrasi")
+@SecondaryTable(name="employeeHours")
 public class MyEmployeeAlharrasi {
 
 	@Id // primary key
@@ -46,10 +48,21 @@ public class MyEmployeeAlharrasi {
 	
 	@Column(name = "POSITION")
 	private String POSITION;
+	
+	@Column(name = "HOLD", table="employeeHours")
+	private String HOLD;
+
+	@Column(name = "HOUR", table="employeeHours")
+	private String HOUR;
 
 	public MyEmployeeAlharrasi() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public MyEmployeeAlharrasi(String tID, String tHour) {
+		HOLD = tID;
+		HOUR = tHour;
 	}
 
 	public MyEmployeeAlharrasi(Integer id, String fIRST_NAME, String lAST_NAME, String pASSWORD, String pHONE,

@@ -20,7 +20,7 @@ ${wronginput}
 	<form action="Login" method="post">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="user" placeholder="Email">
+      <input id="email" type="email" class="form-control" name="user" placeholder="Email">
     </div>
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

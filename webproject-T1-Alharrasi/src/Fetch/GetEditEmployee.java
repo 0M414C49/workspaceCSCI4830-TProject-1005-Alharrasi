@@ -49,6 +49,8 @@ public class GetEditEmployee extends HttpServlet {
 		List<MyEmployeeAlharrasi> employee = UtilDB.getEmployee(request.getParameter("id"));
 		String res = "<div>\r\n";
 		
+		
+		
 		res += String.format("<form class=\"form-horizontal\" action=\"EditEmployee\" method=\"post\">" +
 										"<div class=\"form-group\">\r\n" + 
 				"						<label for=\"Fname\">First Name : </label> <input type=\"text\" class=\"form-control\" name=\"FIRST_NAME\" value=\"%s\"> <br>\r\n" + 

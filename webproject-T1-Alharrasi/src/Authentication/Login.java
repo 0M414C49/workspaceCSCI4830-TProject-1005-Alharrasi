@@ -1,6 +1,7 @@
 package Authentication;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import datamodel.MyEmployeeAlharrasi;
+import util.UtilDB;
 
 /**
  * Servlet implementation class Login
@@ -36,51 +40,70 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("user");
 		String password = request.getParameter("pass");
 		
-		if (username.equals("admin") && password.equals("admin"))
-		{
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
-			session.setAttribute("hr", null);
-			response.sendRedirect("layout.jsp");
-		}
-		else if (username.equals("a") && password.equals("a"))
-		{
-			String hr = "HR";
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
-			session.setAttribute("hr", hr);
-			session.setAttribute("username", username);
-			response.sendRedirect("HRlayout.jsp");
-		}
-		else if (username.equals(""))
-		{
-			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
-					"  <strong>Warning!</strong> Please Enter Username!.\r\n" + 
-					"</div>";
-			request.setAttribute("wronginput", wronginput);
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
-			
-		}
-		else if (password.equals(""))
-		{
-			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
-					"  <strong>Warning!</strong> Please Enter Password!.\r\n" + 
-					"</div>";
-			request.setAttribute("wronginput", wronginput);
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
-			
-		}
-		else
-		{
-			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
-					"  <strong>Warning!</strong> You entered wrong credetionals!.\r\n" + 
-					"</div>";
-			request.setAttribute("wronginput", wronginput);
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
-		}
+		try {
+			  
+			List<MyEmployeeAlharrasi> employee = UtilDB.getEmployeeEmail(username);
+			if (username.equals(employee.get(0).getEMAIL()) && password.equals(employee.get(0).getPASSWORD()) &&
+					!employee.get(0).getPOSITION().equals("HR"))
+			{
+				HttpSession session = request.getSession();
+				session.setAttribute("username", username);
+				session.setAttribute("hr", null);
+				request.setAttribute("user", employee.get(0).getFIRST_NAME() + " " + employee.get(0).getLAST_NAME());
+				RequestDispatcher rd = request.getRequestDispatcher("layout.jsp");
+				rd.forward(request, response);
+			}
+			else if (username.equals(employee.get(0).getEMAIL()) && password.equals(employee.get(0).getPASSWORD()))
+			{
+				String hr = "HR";
+				HttpSession session = request.getSession();
+				session.setAttribute("username", username);
+				session.setAttribute("hr", hr);
+				session.setAttribute("username", username);
+				request.setAttribute("user", employee.get(0).getFIRST_NAME() + " " + employee.get(0).getLAST_NAME());
+				RequestDispatcher rd = request.getRequestDispatcher("HRlayout.jsp");
+				rd.forward(request, response);
+			}
+			else if (username.equals(""))
+			{
+				String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+						"  <strong>Warning!</strong> Please Enter Username!.\r\n" + 
+						"</div>";
+				request.setAttribute("wronginput", wronginput);
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+				
+			}
+			else if (password.equals(""))
+			{
+				String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+						"  <strong>Warning!</strong> Please Enter Password!.\r\n" + 
+						"</div>";
+				request.setAttribute("wronginput", wronginput);
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+				
+			}
+			else
+			{
+				String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+						"  <strong>Warning!</strong> You entered wrong credetionals!.\r\n" + 
+						"</div>";
+				request.setAttribute("wronginput", wronginput);
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+			}
+			}
+			catch(Exception e) {
+				String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+						"  <strong>Warning!</strong> You entered wrong credetionals!.\r\n" + 
+						"</div>";
+				request.setAttribute("wronginput", wronginput);
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+				rd.forward(request, response);
+			}
+		
+		
 	}
 
 }

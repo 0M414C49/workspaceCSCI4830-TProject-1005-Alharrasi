@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+${wronginput}
 
 	<%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -56,13 +56,11 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<h3>HOME</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>Welcome back ${user}.</p>
 			</div>
 			<div id="menu1" class="tab-pane fade">
-				<h3>Menu 1</h3>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-					laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<br>
+				<a class="btn btn-warning btn-rounded btn-sm my-0" href="/webproject-T1-Alharrasi/Attend"> Punch Hour </a>
 			</div>
 			<div id="menu2" class="tab-pane fade">
 				<h3>Menu 2</h3>
@@ -71,8 +69,29 @@
 			</div>
 			<div id="menu3" class="tab-pane fade">
 				<h3>Change Password</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicabo.</p>
+
+				<div class="container">
+					
+					<form action="ChangePass" method="post">
+						
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input id="password"
+								type="password" class="form-control" name="pass"
+								placeholder="Password">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input id="password"
+								type="password" class="form-control" name="confirm"
+								placeholder="Confirm Password">
+						</div>
+						<br>
+						<div class="input-group">
+							<input type="submit" value="Change Password">
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,9 @@
 package actions;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import datamodel.MyEmployeeAlharrasi;
 import util.UtilDB;
 
 /**
@@ -57,9 +61,36 @@ public class EditEmployee extends HttpServlet {
 		pPOSITION = request.getParameter("POSITION");
 
 		
-		UtilDB.editEmployee(id, fIRST_NAME, lAST_NAME, pHONE, eMAIL, aGE, dATE, sALARY, pPOSITION);
 		
-		response.sendRedirect("HRlayout.jsp");
+		
+		List<MyEmployeeAlharrasi> employee = UtilDB.getEmployee(id);
+		List<MyEmployeeAlharrasi> employee2 = UtilDB.getEmployeeEmail(eMAIL);
+		
+		
+		if (employee2.size() != 0 && !employee.get(0).getEMAIL().equals(eMAIL))
+		{
+			String wronginput = "<div class=\"alert alert-warning\">\r\n" + 
+					"  <strong>Warning!</strong> Employee cannot be edited because " + eMAIL + " is already exists.\r\n" + 
+					"</div>";
+			request.setAttribute("wronginput", wronginput);
+			RequestDispatcher rd = request.getRequestDispatcher("HRlayout.jsp");
+			rd.forward(request, response);
+		}
+		else
+		{
+			UtilDB.editEmployee(id, fIRST_NAME, lAST_NAME, pHONE, eMAIL, aGE, dATE, sALARY, pPOSITION);
+			
+			String wronginput = "<div class=\"alert alert-success\">\r\n" + 
+					"  <strong>Success!</strong> " + fIRST_NAME + " " + lAST_NAME + " was edited in the database.\r\n" + 
+					"</div>";
+			request.setAttribute("wronginput", wronginput);
+			request.setAttribute("user", fIRST_NAME + " " + lAST_NAME);
+			RequestDispatcher rd = request.getRequestDispatcher("HRlayout.jsp");
+			rd.forward(request, response);
+		}
+		
+		
+
 		
 	}
 

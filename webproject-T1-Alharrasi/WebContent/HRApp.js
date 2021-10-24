@@ -10,6 +10,10 @@ function removeEmployee(id) {
 	table.ajax.reload();
 }
 
+function addHour()
+{
+	fetch('/webproject-T1-Alharrasi/Attend');
+}
 
 function editEmployee(id) {
 	

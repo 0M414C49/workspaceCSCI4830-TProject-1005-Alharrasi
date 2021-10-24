@@ -38,7 +38,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	${wronginput}
 
 	<%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -57,16 +57,13 @@
 
 	<div class="container">
 		<h2>HR layout</h2>
-		<p>To make the tabs toggleable, add the data-toggle="tab"
-			attribute to each link. Then add a .tab-pane class with a unique ID
-			for every tab and wrap them inside a div element with class
-			.tab-content.</p>
+		<br><br>
 
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 			<li><a data-toggle="tab" href="#menu1">Settings</a></li>
 			<li><a data-toggle="tab" href="#menu2">Add Employee</a></li>
-			<li><a data-toggle="tab" href="#menu3">Remove Employee</a></li>
+			<li><a data-toggle="tab" href="#menu3">Show Employees Table</a></li>
 
 			<li>
 				<form action="Logout">
@@ -78,19 +75,33 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<h3>HOME</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-					do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<p>Welcome back ${user}.</p>
 			</div>
 			<div id="menu1" class="tab-pane fade">
-				<h3>Menu 1</h3>
+				<h3>Change Password</h3>
 
-				<ul class="list-group">
-					<li class="list-group-item">First item
-						<button type="button" name="button">show</button>
-					</li>
-					<li class="list-group-item">Second item</li>
-					<li class="list-group-item">Third item</li>
-				</ul>
+				<div class="container">
+					
+					<form action="ChangePass" method="post">
+						
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input id="password"
+								type="password" class="form-control" name="pass"
+								placeholder="Password">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="glyphicon glyphicon-lock"></i></span> <input id="password"
+								type="password" class="form-control" name="confirm"
+								placeholder="Confirm Password">
+						</div>
+						<br>
+						<div class="input-group">
+							<input type="submit" value="Change Password">
+						</div>
+					</form>
+				</div>
 
 			</div>
 			<div id="menu2" class="tab-pane fade">
@@ -123,9 +134,8 @@
 				</form>
 			</div>
 			<div id="menu3" class="tab-pane fade">
-				<h3>Change Password</h3>
-				<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-					architecto beatae vitae dicta sunt explicabo.</p>
+				<h3>Employees Table</h3>
+				<p>Double click to remove an employee.</p>
 
 				<script>
 					fetchEmployees();
@@ -136,7 +146,7 @@
 
 
 
-<!-- Modal -->
+				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
 
@@ -157,7 +167,7 @@
 
 					</div>
 				</div>
-				
+
 
 				<table id="myTable"
 					class="table table-striped table-bordered table-sm" cellspacing="0"
