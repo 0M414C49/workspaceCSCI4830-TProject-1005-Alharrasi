@@ -12,6 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="HRApp.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -63,9 +64,10 @@ ${wronginput}
 				<a class="btn btn-warning btn-rounded btn-sm my-0" href="/webproject-T1-Alharrasi/Attend"> Punch Hour </a>
 			</div>
 			<div id="menu2" class="tab-pane fade">
-				<h3>Menu 2</h3>
-				<p>Sed ut perspiciatis unde omnis iste natus error sit
-					voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+				
+				<button onclick="getHours()">Refresh</button>
+				<br><br>
+				<div id="add_to_me"></div>
 			</div>
 			<div id="menu3" class="tab-pane fade">
 				<h3>Change Password</h3>

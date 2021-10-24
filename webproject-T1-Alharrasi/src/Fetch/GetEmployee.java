@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
+
 import datamodel.MyEmployeeAlharrasi;
 import util.UtilDB;
 
@@ -61,72 +63,74 @@ public class GetEmployee extends HttpServlet {
 		for(int i = 0; i < employees.size(); i++)
 		{
 			
-			String btn = String.format("<a id=\\\"my-button\\\" class=\\\"btn btn-danger btn-rounded btn-sm my-0\\\" onclick=\\\"removeEmployee(%d)\\\"> Remove </a> <a class=\\\"btn btn-warning btn-rounded btn-sm my-0\\\" data-toggle=\\\"modal\\\" data-target=\\\"#myModal\\\" onclick=\\\"editEmployee(%d)\\\"> Edit </a>",
-					employees.get(i).getId(),
-					employees.get(i).getId());
-			
-			
-			if (!session.getAttribute("username").equals(employees.get(i).getEMAIL()))
+			if (!(employees.get(i).getEMAIL() == null))
 			{
-				res += String.format(
-						"    [\r\n" + 
-								"      \"%s %s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\"\r\n" + 
-								"    ]",
-						employees.get(i).getFIRST_NAME(),
-						employees.get(i).getLAST_NAME(),
-						employees.get(i).getPOSITION(),
-						employees.get(i).getPHONE(),
-						employees.get(i).getEMAIL(),
-						employees.get(i).getAGE(),
-						employees.get(i).getDATE(),
-						employees.get(i).getSALARY(),
-						btn
-						);
-			}
-			else
-			{
-				res += String.format(
-						"    [\r\n" + 
-								"      \"%s %s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\",\r\n" + 
-								"      \"%s\"\r\n" + 
-								"    ]",
-						employees.get(i).getFIRST_NAME(),
-						employees.get(i).getLAST_NAME(),
-						employees.get(i).getPOSITION(),
-						employees.get(i).getPHONE(),
-						employees.get(i).getEMAIL(),
-						employees.get(i).getAGE(),
-						employees.get(i).getDATE(),
-						employees.get(i).getSALARY(),
-						""
-						);
-			}
-			
-			
-			
-			
-			if (i < employees.size() - 1)
-			{
+				String btn = String.format("<a id=\\\"my-button\\\" class=\\\"btn btn-danger btn-rounded btn-sm my-0\\\" onclick=\\\"removeEmployee(%d)\\\"> Remove </a> <a class=\\\"btn btn-warning btn-rounded btn-sm my-0\\\" data-toggle=\\\"modal\\\" data-target=\\\"#myModal\\\" onclick=\\\"editEmployee(%d)\\\"> Edit </a>"
+						+ " <a class=\\\"btn btn-warning btn-rounded btn-sm my-0\\\" data-toggle=\\\"modal\\\" data-target=\\\"#myModal\\\" onclick=\\\"getHRHours(%d)\\\"> Hours </a>",
+						employees.get(i).getId(),
+						employees.get(i).getId(),
+						employees.get(i).getId());
+				
+				
+				if (!session.getAttribute("username").equals(employees.get(i).getEMAIL()))
+				{
+					res += String.format(
+							"    [\r\n" + 
+									"      \"%s %s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\"\r\n" + 
+									"    ]",
+							employees.get(i).getFIRST_NAME(),
+							employees.get(i).getLAST_NAME(),
+							employees.get(i).getPOSITION(),
+							employees.get(i).getPHONE(),
+							employees.get(i).getEMAIL(),
+							employees.get(i).getAGE(),
+							employees.get(i).getDATE(),
+							employees.get(i).getSALARY(),
+							btn
+							);
+				}
+				else if (session.getAttribute("username").equals(employees.get(i).getEMAIL()))
+				{
+					String btn2 = String.format(" <a class=\\\"btn btn-warning btn-rounded btn-sm my-0\\\" data-toggle=\\\"modal\\\" data-target=\\\"#myModal\\\" onclick=\\\"getHRHours(%d)\\\"> Hours </a>", employees.get(i).getId());
+					res += String.format(
+							"    [\r\n" + 
+									"      \"%s %s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\",\r\n" + 
+									"      \"%s\"\r\n" + 
+									"    ]",
+							employees.get(i).getFIRST_NAME(),
+							employees.get(i).getLAST_NAME(),
+							employees.get(i).getPOSITION(),
+							employees.get(i).getPHONE(),
+							employees.get(i).getEMAIL(),
+							employees.get(i).getAGE(),
+							employees.get(i).getDATE(),
+							employees.get(i).getSALARY(),
+							btn2
+							);
+				}
+				
+				
+				
 				res += " , ";
+
 			}
-			
 			
 			
 		}
-		
+		res = res.substring(0, res.length() - 2);
 		res += "]}";
 		
 		out.append(res);

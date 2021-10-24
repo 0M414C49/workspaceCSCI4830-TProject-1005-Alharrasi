@@ -55,6 +55,11 @@ public class Attend extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("layout.jsp");
 			rd.forward(request, response);
 		}
+		else
+		{
+			RequestDispatcher rd = request.getRequestDispatcher("HRlayout.jsp");
+			rd.forward(request, response);
+		}
 		
 	}
 

@@ -57,7 +57,6 @@ public class Login extends HttpServlet {
 			{
 				String hr = "HR";
 				HttpSession session = request.getSession();
-				session.setAttribute("username", username);
 				session.setAttribute("hr", hr);
 				session.setAttribute("username", username);
 				request.setAttribute("user", employee.get(0).getFIRST_NAME() + " " + employee.get(0).getLAST_NAME());

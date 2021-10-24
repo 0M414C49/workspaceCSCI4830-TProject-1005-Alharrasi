@@ -169,6 +169,31 @@ public class UtilDB {
 		return resultList;
 	}
 	
+	
+	public static List<MyEmployeeAlharrasi> getEmployeeHours(String id) {
+		List<MyEmployeeAlharrasi> resultList = new ArrayList<MyEmployeeAlharrasi>();
+		Session session = getSessionFactory().openSession();
+		Transaction tx = null; // each process needs transaction and commit the changes in DB.
+
+		try {
+			tx = session.beginTransaction();
+			List<?> employees = session.createQuery(String.format("FROM MyEmployeeAlharrasi where HOLD= '%s'", id)).list();
+			for (Iterator<?> iterator = employees.iterator(); iterator.hasNext();) {
+				MyEmployeeAlharrasi employee = (MyEmployeeAlharrasi) iterator.next();
+				resultList.add(employee);
+			}
+			tx.commit();
+
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return resultList;
+	}
+	
 
 	public static List<MyEmployeeAlharrasi> listEmployees() {
 		List<MyEmployeeAlharrasi> resultList = new ArrayList<MyEmployeeAlharrasi>();

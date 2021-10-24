@@ -137,6 +137,22 @@ public class MyEmployeeAlharrasi {
 		return PHONE;
 	}
 
+	public String getHOLD() {
+		return HOLD;
+	}
+
+	public void setHOLD(String hOLD) {
+		HOLD = hOLD;
+	}
+
+	public String getHOUR() {
+		return HOUR;
+	}
+
+	public void setHOUR(String hOUR) {
+		HOUR = hOUR;
+	}
+
 	public void setPHONE(String pHONE) {
 		PHONE = pHONE;
 	}

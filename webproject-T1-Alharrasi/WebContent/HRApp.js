@@ -10,9 +10,34 @@ function removeEmployee(id) {
 	table.ajax.reload();
 }
 
-function addHour()
+function getHours()
 {
-	fetch('/webproject-T1-Alharrasi/Attend');
+	fetch('/webproject-T1-Alharrasi/GetHours')
+	.then(
+			function(response) {
+				return response
+						.text()
+						.then(
+								function(text) {
+									document
+											.getElementById("add_to_me").innerHTML = text;
+								});
+			});
+}
+
+function getHRHours(id)
+{
+	fetch('/webproject-T1-Alharrasi/GetHours?id=' + id)
+	.then(
+			function(response) {
+				return response
+						.text()
+						.then(
+								function(text) {
+									document
+											.getElementById("add_to_me").innerHTML = text;
+								});
+			});
 }
 
 function editEmployee(id) {

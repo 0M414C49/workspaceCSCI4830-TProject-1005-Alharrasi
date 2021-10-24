@@ -64,6 +64,7 @@
 			<li><a data-toggle="tab" href="#menu1">Settings</a></li>
 			<li><a data-toggle="tab" href="#menu2">Add Employee</a></li>
 			<li><a data-toggle="tab" href="#menu3">Show Employees Table</a></li>
+			<li><a data-toggle="tab" href="#menu4">Punch Hours</a></li>
 
 			<li>
 				<form action="Logout">
@@ -187,10 +188,17 @@
 				</table>
 
 
-
-
+			</div>
+			
+			
+			
+			<div id="menu4" class="tab-pane fade">
+				<br>
+				<a class="btn btn-warning btn-rounded btn-sm my-0" href="/webproject-T1-Alharrasi/Attend"> Punch Hour </a>
 
 			</div>
+			
+			
 		</div>
 	</div>
 </body>
